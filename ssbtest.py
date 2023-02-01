@@ -1,11 +1,14 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import pandas as pd
+import json
 
 app = Flask(__name__)
+app.secret_key = 'secret_key'  # Replace with a secret key of your own
 
 
-def populate():
-    df = pd.read_excel("mcq.xlsx")
+def populate(test_type):
+    excel_filename = test_type
+    df = pd.read_excel(excel_filename)
     questions = []
     for i in range(len(df)):
         question = {}
@@ -15,7 +18,6 @@ def populate():
                                df.iloc[i]["option3"], df.iloc[i]["option4"]]
         question["answer"] = df.iloc[i]["answer"]
         questions.append(question)
-    print(len(questions))
     return questions
 
 
@@ -30,11 +32,21 @@ def result():
     return render_template("result.html", score=score)
 
 
+@app.route("/detailedresult", methods=["GET", "POST"])
+def detailedresult():
+    score = 0
+    question_analysis = session.get("questions")
+    return render_template("detailedresult.html", score=score, questions=question_analysis)
+
+
 @app.route("/test", methods=["GET", "POST"])
 def test():
     if request.method == "GET":
-        questions = populate()
-        print(questions)
+        username = request.args.get('username')
+        test_type = request.args.get('questionpaper')
+        session["username"] = username
+        session["test_type"] = test_type
+        questions = populate(test_type)
         return render_template("test.html", questions=questions)
 
     if request.method == "POST":
@@ -42,7 +54,8 @@ def test():
         total_unanswered = 0
         total_correct = 0
         total_wrong = 0
-        questions = populate()
+        test_type = session.get("test_type")
+        questions = populate(test_type)
         for question in questions:
             if str(question["id"]) in request.form:
                 if request.form[str(question["id"])] == str(question["answer"]):
@@ -55,7 +68,9 @@ def test():
                 question["selected_answer"] = None
                 total_unanswered += 1
         total_questions = len(questions)
-        score = total_correct - (total_wrong*0.25)
+        score = total_correct - (total_wrong * 0.25)
+        print("1")
+        print("2")
         return render_template("result.html", score=score, questions=questions, total_questions=total_questions,
                                total_correct=total_correct, total_wrong=total_wrong, total_unanswered=total_unanswered)
 

@@ -3,13 +3,60 @@
 <head>
   <title>AIPDM</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-</head>
+  </head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  $("#event_details").hide();
+
+  $("#test_type").change(function() {
+    if ($("#test_type").val() !== "please select") {
+      $("#event_details").show();
+    } else {
+      $("#event_details").hide();
+    }
+  });
+});
+</script>
 <body class="flex items-center justify-center h-screen">
   <div class="text-center">
     <h1 class="text-2xl">AIPDM</h1>
     <p class="mb-6">Welcome to the MCQ test application.</p>
-    <a class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" href="{{ url_for('test') }}">Start the test</a>
+    <div>
+      <form action="test" method="get">
+        <input type="text" class="block border border-gray-500 p-2 mb-4" name="username" placeholder="Enter your name">
+        <select  name="test_type" class="block border border-gray-500 p-2 mb-4" id="test_type" >
+          <option value="please select">Select Event</option>
+          <option value="event1">Event I</option>
+          <option value="event2">Event II</option>
+        </select>
+        <select  name="questionpaper" class="block border border-gray-500 p-2 mb-4" id="event_details">
+        </select>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Start the test</button>
+      </form>
+    </div>
   </div>
 </body>
 
+  <script>
+  const testType = document.getElementById("test_type");
+  const eventDetails = document.getElementById("event_details");
+
+  testType.addEventListener("change", function() {
+    if (this.value === "event1") {
+      eventDetails.innerHTML = `
+        <option value="ca2feb10am.xlsx">2 Feb: 10am</option>
+        <option value="ca2feb3pm.xlsx">2 Feb: 3pm</option>
+      `;
+    } else if (this.value === "event2") {
+      eventDetails.innerHTML = `
+        <option value="asp2feb10am.xlsx">2 Feb: 10am</option>
+        <option value="asp2feb3pm.xlsx">2 Feb: 3pm</option>
+      `;
+    } else {
+      eventDetails.innerHTML = ``;
+    }
+  });
+</script>
 </html>
