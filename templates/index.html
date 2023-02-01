@@ -46,13 +46,15 @@ $(document).ready(function() {
   testType.addEventListener("change", function() {
     if (this.value === "event1") {
       eventDetails.innerHTML = `
-        <option value="ca2feb10am.xlsx">2 Feb: 10am</option>
-        <option value="ca2feb3pm.xlsx">2 Feb: 3pm</option>
+        <option value="ca1feb10am.xlsx">1 Feb: 10am</option>
+        <option value="ca1feb4pm.xlsx">1 Feb: 4pm</option>
+        <option value="ca1feb9pm.xlsx">1 Feb: 9pm</option>
       `;
     } else if (this.value === "event2") {
       eventDetails.innerHTML = `
-        <option value="asp2feb10am.xlsx">2 Feb: 10am</option>
-        <option value="asp2feb3pm.xlsx">2 Feb: 3pm</option>
+        <option value="asp1feb10am.xlsx">1 Feb: 10am</option>
+        <option value="asp1feb4pm.xlsx">1 Feb: 4pm</option>
+        <option value="asp1feb9pm.xlsx">1 Feb: 9pm</option>
       `;
     } else {
       eventDetails.innerHTML = ``;

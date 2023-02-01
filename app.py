@@ -1,6 +1,6 @@
+from datetime import datetime
 from flask import Flask, render_template, request, session
 import pandas as pd
-import json
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Replace with a secret key of your own
@@ -62,8 +62,6 @@ def test():
                 total_unanswered += 1
         total_questions = len(questions)
         score = total_correct - (total_wrong * 0.25)
-        print("1")
-        print("2")
         return render_template("result.html", score=score, questions=questions, total_questions=total_questions,
                                total_correct=total_correct, total_wrong=total_wrong, total_unanswered=total_unanswered)
 
