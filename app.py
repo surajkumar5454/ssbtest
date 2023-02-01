@@ -32,13 +32,6 @@ def result():
     return render_template("result.html", score=score)
 
 
-@app.route("/detailedresult", methods=["GET", "POST"])
-def detailedresult():
-    score = 0
-    question_analysis = session.get("questions")
-    return render_template("detailedresult.html", score=score, questions=question_analysis)
-
-
 @app.route("/test", methods=["GET", "POST"])
 def test():
     if request.method == "GET":
