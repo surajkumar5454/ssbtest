@@ -1,1 +1,1 @@
-web: gunicorn app_name:ssb-test
+web: gunicorn app_name:ssbtest
