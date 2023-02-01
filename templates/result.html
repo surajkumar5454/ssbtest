@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCQ Test</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="h-screen bg-gray-100">
+  <div class="h-full w-full flex items-center justify-center">
+    <div class="w-full max-w-sm p-10 bg-white rounded-lg shadow-lg">
+<!--      <h1 class="text-2xl font-bold mb-6">MCQ Test</h1>-->
+      <p class="text-lg font-medium mb-6" align="center"><u>Final result</u></p>
+<!--      <ul>-->
+<!--        {% for question in questions %}-->
+<!--          <li class="mb-2">{{ question.text }}:-->
+<!--            {% if question.answer == question.selected_answer%}-->
+<!--              <span class="text-green-500 font-medium">Correct</span>-->
+<!--            {% elif question.selected_answer == None %}-->
+<!--              <span class="text-yellow-500 font-medium">Not Answered</span>-->
+<!--            {% else %}-->
+<!--              <span class="text-red-500 font-medium">Incorrect</span>-->
+<!--            {% endif %}-->
+<!--          </li>-->
+<!--        {% endfor %}-->
+<!--      </ul>-->
+       <p class="text-green-500 font-medium">Total Correct: {{ total_correct }}</p>
+      <p class="text-red-500 font-medium">Total Incorrect: {{ total_wrong }}</p>
+      <p class="text-yellow-500 font-medium">Total Unanswered: {{ total_unanswered }}</p>
+      <p class="text-green-500 font-medium">Score: {{ score }}/{{ total_questions }}</p>
+        <br><br>
+      <p align="center"><a class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" href="{{ url_for('result') }}">Detailed Result Analysis</a></p>
+    </div>
+
+  </div>
+</body>
+</html>
