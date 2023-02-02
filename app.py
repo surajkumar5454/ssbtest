@@ -1,13 +1,31 @@
 from datetime import datetime
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect, url_for
 import pandas as pd
-
+import os
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Replace with a secret key of your own
 
+UPLOAD_FOLDER = "papers"
+
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    if request.method == "POST":
+        questions_file = request.files["questions_file"]
+
+        # Save the questions file to the uploads folder
+        filename = questions_file.filename
+        questions_file.save(os.path.join(UPLOAD_FOLDER, filename))
+
+        return redirect(url_for("index"))
+
+    return render_template("admin.html")
+
 
 def populate(test_type):
-    excel_filename = test_type
+
+    excel_path = "papers"
+    excel_filename = excel_path+"/"+test_type
     df = pd.read_excel(excel_filename)
     questions = []
     for i in range(len(df)):
