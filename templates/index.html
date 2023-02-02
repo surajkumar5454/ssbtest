@@ -20,18 +20,20 @@ $(document).ready(function() {
 });
 </script>
 <body class="flex items-center justify-center h-screen">
+
   <div class="text-center">
+    <div align="center"><img src="./../static/ssblogo.png" alt="Image" width="100" height="100" ></div>
     <h1 class="text-2xl">AIPDM</h1>
     <p class="mb-6">Welcome to the MCQ test application.</p>
     <div>
       <form action="test" method="get">
-        <input type="text" class="block border border-gray-500 p-2 mb-4" name="username" placeholder="Enter your name">
-        <select  name="test_type" class="block border border-gray-500 p-2 mb-4" id="test_type" >
+        <input type="text" class="block border border-gray-500 p-2 mb-4" name="username" placeholder="Enter your name" required>
+        <select  name="test_type" class="block border border-gray-500 p-2 mb-4" id="test_type" required>
           <option value="please select">Select Event</option>
           <option value="event1">Event I</option>
           <option value="event2">Event II</option>
         </select>
-        <select  name="questionpaper" class="block border border-gray-500 p-2 mb-4" id="event_details">
+        <select  name="questionpaper" class="block border border-gray-500 p-2 mb-4" id="event_details" required>
         </select>
         <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Start the test</button>
       </form>
@@ -50,6 +52,7 @@ $(document).ready(function() {
         <option value="ca1feb4pm.xlsx">1 Feb: 4pm</option>
         <option value="ca1feb9pm.xlsx">1 Feb: 9pm</option>
         <option value="ca2feb11am.xlsx">2 Feb: 11am</option>
+        <option value="ca2feb4pm.xlsx">2 Feb: 4pm</option>
       `;
     } else if (this.value === "event2") {
       eventDetails.innerHTML = `
@@ -57,6 +60,7 @@ $(document).ready(function() {
         <option value="asp1feb4pm.xlsx">1 Feb: 4pm</option>
         <option value="asp1feb9pm.xlsx">1 Feb: 9pm</option>
         <option value="asp2feb11am.xlsx">2 Feb: 11am</option>
+        <option value="asp2feb4pm.xlsx">2 Feb: 4pm</option>
       `;
     } else {
       eventDetails.innerHTML = ``;
