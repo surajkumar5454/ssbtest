@@ -37,7 +37,7 @@ def result():
 #     test_type = session.get("test_type")
 #     test_type = test_type.split('.')
 #     current_datetime = datetime.now()
-#     file = open(f"static/{username}-{test_type[0]}.txt", "w")
+#     file = open(f"static/{username}-{test_type[0]}.txt", "a+")
 #
 #     # Write to the file
 #     file.write(f"Name: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
