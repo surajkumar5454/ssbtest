@@ -32,18 +32,18 @@ def result():
     return render_template("result.html", score=score)
 
 
-def writetofile(score, total_correct, total_wrong, total_unanswered):
-    username = session.get("username")
-    test_type = session.get("test_type")
-    test_type = test_type.split('.')
-    current_datetime = datetime.now()
-    file = open(f"static/{username}-{test_type[0]}.txt", "w")
-
-    # Write to the file
-    file.write(f"Name: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
-
-    # Close the file
-    file.close()
+# def writetofile(score, total_correct, total_wrong, total_unanswered):
+#     username = session.get("username")
+#     test_type = session.get("test_type")
+#     test_type = test_type.split('.')
+#     current_datetime = datetime.now()
+#     file = open(f"static/{username}-{test_type[0]}.txt", "w")
+#
+#     # Write to the file
+#     file.write(f"Name: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
+#
+#     # Close the file
+#     file.close()
 
 
 @app.route("/test", methods=["GET", "POST"])
@@ -76,7 +76,7 @@ def test():
                 total_unanswered += 1
         total_questions = len(questions)
         score = total_correct - (total_wrong * 0.25)
-        writetofile(score, total_correct, total_wrong, total_unanswered)
+        # writetofile(score, total_correct, total_wrong, total_unanswered)
         return render_template("result.html", score=score, questions=questions, total_questions=total_questions,
                                total_correct=total_correct, total_wrong=total_wrong, total_unanswered=total_unanswered)
 
