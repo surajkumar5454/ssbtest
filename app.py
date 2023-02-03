@@ -21,14 +21,13 @@ def admin():
     if request.method == "POST":
         questions_file = request.files["questions_file"]
         description = request.form["description"]
-        print("desc: " + description)
         # Save the questions file to the uploads folder
         filename = questions_file.filename
         questions_file.save(os.path.join(UPLOAD_FOLDER, filename))
         file = open(f"papers/papers.txt", "a+")
         file.write(f"\n{filename},{description}")
         file.close()
-        return redirect(url_for("index"))
+        return redirect(url_for("admin"))
 
     return render_template("admin.html")
 
@@ -55,15 +54,11 @@ def index():
     temp = []
     with open('papers/papers.txt', 'r') as f:
         for line in f:
-            print("line" + line)
-
-            # split the line on the comma and store the result in two variables
             # filename, desc = line.strip().split(',')
             temp = line.strip().split(',')
             if len(temp) == 2:
                 filename = temp[0]
                 desc = temp[1]
-                # create a dictionary with the two variables and append it to the data list
                 filedata.append({'filename': filename, 'desc': desc})
     return render_template("index.html", filedata=filedata)
 
@@ -80,13 +75,8 @@ def writetofile(score, total_correct, total_wrong, total_unanswered):
     test_type = test_type.split('.')
     current_datetime = datetime.now()
     file = open(f"logs/logs.txt", "a+")
-    # file = open(f"static/{username}-{test_type[0]}.txt", "a+")
-
-    # Write to the file
     file.write(
         f"\n\n\nName: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
-
-    # Close the file
     file.close()
 
 
