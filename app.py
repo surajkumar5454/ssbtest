@@ -26,7 +26,7 @@ def admin():
         filename = questions_file.filename
         questions_file.save(os.path.join(UPLOAD_FOLDER, filename))
         file = open(f"papers/papers.txt", "a+")
-        file.write(f"{filename},{description}\n")
+        file.write(f"\n{filename},{description}")
         file.close()
         return redirect(url_for("index"))
 
@@ -52,12 +52,19 @@ def populate(test_type):
 @app.route("/")
 def index():
     filedata = []
+    temp = []
     with open('papers/papers.txt', 'r') as f:
         for line in f:
+            print("line" + line)
+
             # split the line on the comma and store the result in two variables
-            filename, desc = line.strip().split(',')
-            # create a dictionary with the two variables and append it to the data list
-            filedata.append({'filename': filename, 'desc': desc})
+            # filename, desc = line.strip().split(',')
+            temp = line.strip().split(',')
+            if len(temp) == 2:
+                filename = temp[0]
+                desc = temp[1]
+                # create a dictionary with the two variables and append it to the data list
+                filedata.append({'filename': filename, 'desc': desc})
     return render_template("index.html", filedata=filedata)
 
 
