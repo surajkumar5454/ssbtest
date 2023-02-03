@@ -6,14 +6,13 @@ import json
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'  # Replace with a secret key of your own
-
 UPLOAD_FOLDER = "papers"
 
 
 @app.route("/logs", methods=["GET", "POST"])
 def logs():
     f = open('logs/logs.txt', 'r')
-    return f.readlines()
+    return f.read().splitlines()
 
 
 @app.route("/admin", methods=["GET", "POST"])
