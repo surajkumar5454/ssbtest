@@ -114,5 +114,26 @@ def test():
                                total_correct=total_correct, total_wrong=total_wrong, total_unanswered=total_unanswered)
 
 
+@app.route("/revision", methods=["GET", "POST"])
+def revision():
+    if request.method == "GET":
+        filedata = []
+        temp = []
+        with open('papers/papers.txt', 'r') as f:
+            for line in f:
+                # filename, desc = line.strip().split(',')
+                temp = line.strip().split(',')
+                if len(temp) == 2:
+                    filename = temp[0]
+                    desc = temp[1]
+                    filedata.append({'filename': filename, 'desc': desc})
+        return render_template("revisionsearch.html", filedata=filedata)
+    if request.method == "POST":
+        test_type = request.form['questionpaper']
+        print("paer selected: " + test_type)
+        questions = populate(test_type)
+        return render_template("revision.html", questions=questions)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
