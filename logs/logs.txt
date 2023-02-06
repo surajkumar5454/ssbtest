@@ -1,178 +1,4 @@
-[
-"Name: Ravindra Hiwale",
-"Test Type: asp3feb4pm",
-"Total Correct: 73",
-"Total Incorrect: 25",
-"Total Unanswered: 2",
-"Final Score: 66.75",
 
-
-
-"Name: gaurav joshi",
-"Test Type: ca3feb4pm",
-"Total Correct: 66",
-"Total Incorrect: 24",
-"Total Unanswered: 10",
-"Final Score: 60.0",
-
-]
-
-
-
-
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 3
-Total Incorrect: 0
-Total Unanswered: 97
-Final Score: 3.0
-Date/Time: 2023-02-03 17:22:59.150528
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:24:34.454090
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:25:53.476007
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:26:49.109213
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:28:24.750626
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:29:19.388413
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:30:11.430636
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:30:40.098132
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:32:00.782682
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:32:02.232735
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:32:19.798355
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:32:42.761237
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:32:58.962859
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:33:31.321118
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:33:58.601807
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:34:26.958402
-
-
-Name: ispsecureeye
-Test Type: asp3feb4pm
-Total Correct: 1
-Total Incorrect: 2
-Total Unanswered: 97
-Final Score: 0.5
-Date/Time: 2023-02-03 17:34:57.419666
 
 
 Name: admin
@@ -181,4 +7,31 @@ Total Correct: 2
 Total Incorrect: 11
 Total Unanswered: 87
 Final Score: -0.75
-Date/Time: 2023-02-03 17:35:59.989392
+Date/Time: 2023-02-03 17:39:50.511803
+
+
+Name: admin
+Test Type: asp3feb4pm
+Total Correct: 0
+Total Incorrect: 2
+Total Unanswered: 98
+Final Score: -0.5
+Date/Time: 2023-02-03 17:47:29.342800
+
+
+Name: admin
+Test Type: asp3feb4pm
+Total Correct: 0
+Total Incorrect: 2
+Total Unanswered: 98
+Final Score: -0.5
+Date/Time: 2023-02-03 17:48:56.847311
+
+
+Name: admin
+Test Type: asp3feb4pm
+Total Correct: 6
+Total Incorrect: 16
+Total Unanswered: 78
+Final Score: 2.0
+Date/Time: 2023-02-03 17:49:52.387252
