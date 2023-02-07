@@ -27,7 +27,12 @@
       <div class="w-full mx-10 my-10">
       <ul id="list"  style="display: none;">
         {% for question in questions %}
-          <li class="mb-2">{{ question.id }}: {{ question.text }} <br> {{question.options}} <br> Correct Answer: {{question.answer}}<br>
+          <li class="mb-2">{{ question.id }}: {{ question.text }}
+              <br> 1.&nbsp;&nbsp; {{question.options[0]}}
+              <br> 2.&nbsp;&nbsp;{{question.options[1]}}
+              <br> 3.&nbsp;&nbsp;{{question.options[2]}}
+              <br> 4.&nbsp;&nbsp;{{question.options[3]}}
+              <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Correct Answer: {{question.answer}}<br>
             {% if question.answer == question.selected_answer%}
               <span class="text-green-500 font-medium">Correct</span>
             {% elif question.selected_answer == None %}
