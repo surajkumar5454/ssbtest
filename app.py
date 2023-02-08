@@ -1,4 +1,6 @@
 from datetime import datetime
+from time import sleep
+
 from flask import Flask, render_template, request, session, redirect, url_for
 import pandas as pd
 import os
@@ -109,6 +111,7 @@ def test():
                 total_unanswered += 1
         total_questions = len(questions)
         score = total_correct - (total_wrong * 0.25)
+        sleep(10)
         # writetofile(score, total_correct, total_wrong, total_unanswered)
         username = session.get("username")
         test_type = session.get("test_type")

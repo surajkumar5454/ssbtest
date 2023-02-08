@@ -7,12 +7,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 <body class="flex items-center justify-center h-screen">
-<div>
+<div class="border-4 border-black-100 border-solid bg-dark-400">
   <p align="center"><strong>MCQ Test Admin Page</strong></p>
   <br>
   <form action="admin" method="post" enctype="multipart/form-data" class="flex items-center space-x-6">
     <div class="shrink-0">
-    <img class="h-30 w-20 object-cover rounded-full" src="./../static/ssblogo.png" alt="SSB" />
+    <a href ="/"><img class="h-30 w-20 object-cover rounded-full" src="./../static/ssblogo.png" alt="SSB" /></a>
   </div>
     <label class="block">
     <span class="sr-only">Choose question file</span>
@@ -24,7 +24,8 @@
       hover:file:bg-violet-100
     " required/>
   <input type="text" name="description" class="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Test Description" required/>
- <input class="my-4 mx-12 bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full" type="submit" value="Submit" id="submitBtn">
+ <input class="my-4  bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full" type="submit" value="Submit" id="submitBtn">
+ <button class="my-4 bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full" onclick = "window.location.href='/';">Home</button>
   </label>
   </form>
 </div>
