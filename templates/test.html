@@ -3,7 +3,6 @@
 <head>
   <title>MCQ Test</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-<<<<<<< HEAD
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
@@ -366,85 +365,5 @@
       }
     });
   </script>
-=======
-    <style>
-      .fixed-div {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    color: red;
-  }
-    .hidden-image {
-    display: none;
-  }
-    </style>
-    <script>
-      function startTimer(duration, display) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
-          minutes = parseInt(timer / 60, 10);
-          seconds = parseInt(timer % 60, 10);
-
-          minutes = minutes < 10 ? "0" + minutes : minutes;
-          seconds = seconds < 10 ? "0" + seconds : seconds;
-
-          display.textContent = minutes + ":" + seconds;
-
-              if (minutes < 15) {
-                  document.getElementById("image").style.display = "block";
-              }
-
-
-          if (--timer < 0) {
-            clearInterval();
-            document.getElementById("submit_btn").click();
-          }
-        }, 1000);
-      }
-
-      window.onload = function () {
-        var fiveMinutes = 60 * 60,
-          display = document.querySelector('#time');
-        startTimer(fiveMinutes, display);
-      };
-    </script>
-</head>
-<body class="h-screen bg-gray-100">
-  <div class="h-full w-full ">
-      <h1 class="text-2xl font-bold mb-6" align="center">AIPDM-2023</h1>
-<div class="fixed-div">
-  <p >Time remaining: <span id="time">60:00</span></p>
-  <img id="image" src="./../static/alert.gif" class="hidden-image">
-</div>
-
-      <form method="post"  class="bg-white p-6 rounded-lg shadow-lg">
-        {% for question in questions %}
-          <div class="mb-6">
-            <p class="text-lg font-medium mb-2">{{ question.id }}: {{ question.text }}</p>
-            <div class="flex flex-col">
-              <label class="mb-2">
-                <input class="mr-2" type="radio" name="{{ question.id }}" value="1">
-                {{ question.options[0] }}
-              </label>
-              <label class="mb-2">
-                <input class="mr-2" type="radio" name="{{ question.id }}" value="2">
-                {{ question.options[1] }}
-              </label>
-              <label class="mb-2">
-                <input class="mr-2" type="radio" name="{{ question.id }}" value="3">
-                {{ question.options[2] }}
-              </label>
-              <label class="mb-2">
-                <input class="mr-2" type="radio" name="{{ question.id }}" value="4">
-                {{ question.options[3] }}
-              </label>
-            </div>
-          </div>
-        {% endfor %}
-        <input class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full" type="submit" value="Submit" id="submit_btn">
-      </form>
-
-  </div>
->>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 </body>
 </html>
