@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MCQ Test</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f0f2f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .question-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .timer-card {
+      background: #1a237e;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .option-label {
+      display: block;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .option-label:hover {
+      background: #f5f5f5;
+      border-color: #2196f3;
+    }
+    input[type="radio"]:checked + .option-label {
+      background: #e3f2fd;
+      border-color: #2196f3;
+      color: #1565c0;
+    }
+    .navigation-btn {
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navigation-btn.prev-btn {
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+    }
+    .navigation-btn.next-btn {
+      background: linear-gradient(145deg, #3b82f6, #2563eb);
+      box-shadow: 5px 5px 10px rgba(37, 99, 235, 0.2);
+      color: white;
+    }
+    .navigation-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+    .navigation-btn:active {
+      transform: translateY(0);
+    }
+    .navigation-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .question-palette-container {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      margin: 20px 0;
+    }
+    .question-palette {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .question-number {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .question-number.unanswered {
+      background: #e0e0e0;
+      color: #424242;
+    }
+    .question-number.visited {
+      background: #ff9800;
+      color: white;
+    }
+    .question-number.answered {
+      background: #4caf50;
+      color: white;
+    }
+    .question-number.current {
+      background: #2196f3;
+      color: white;
+    }
+    .question-number:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .submit-btn {
+      background: #d32f2f;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .submit-btn:hover {
+      background: #b71c1c;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="timer-card">
+    <i class="fas fa-clock mr-2"></i>
+    Time remaining: <span id="timer" class="font-bold">60:00</span>
+  </div>
+
+  <div class="container mx-auto px-4 py-8">
+    <form method="post" id="testForm" action="{{ url_for('submit_test') }}">
+      <div class="question-card">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-semibold">Question <span id="currentQuestionNum">1</span> of {{ questions|length }}</h2>
+        </div>
+
+        {% for question in questions %}
+        <div class="question-container" id="question{{ question.id }}" style="display: {% if loop.index == 1 %}block{% else %}none{% endif %};">
+          <p class="text-lg mb-4">{{ question.text }}</p>
+          <div class="options-container">
+            {% for option in question.options %}
+            <div class="option-wrapper">
+              <input type="radio" 
+                     name="{{ question.id }}" 
+                     id="q{{ question.id }}opt{{ loop.index }}" 
+                     value="{{ loop.index }}"
+                     class="hidden"
+                     onchange="updateQuestionStatus({{ question.id }})">
+              <label for="q{{ question.id }}opt{{ loop.index }}" class="option-label">
+                {{ option }}
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="question-palette-container">
+          <div class="question-palette">
+            {% for question in questions %}
+            <div class="question-number unanswered" 
+                 id="indicator{{ question.id }}"
+                 onclick="jumpToQuestion({{ loop.index0 }})">
+              {{ loop.index }}
+            </div>
+            {% endfor %}
+          </div>
+          
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background-color: #e0e0e0;"></div>
+              <span>Not Visited</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background-color: #ff9800;"></div>
+              <span>Visited</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background-color: #4caf50;"></div>
+              <span>Answered</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background-color: #2196f3;"></div>
+              <span>Current</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center mt-6">
+          <button type="button" 
+                  id="prevBtn" 
+                  onclick="showPreviousQuestion()" 
+                  class="navigation-btn prev-btn"
+                  disabled>
+            <i class="fas fa-chevron-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <button type="button" 
+                  id="nextBtn" 
+                  onclick="showNextQuestion()" 
+                  class="navigation-btn next-btn">
+            <span>Next</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" 
+              class="submit-btn">
+        <i class="fas fa-paper-plane mr-2"></i>Submit Test
+      </button>
+    </form>
+  </div>
+
+  <script>
+    let currentQuestion = 0;
+    const totalQuestions = {{ questions|length }};
+    const answeredQuestions = new Set();
+    const visitedQuestions = new Set();
+    const questions = {{ questions|tojson|safe }};
+
+    function showQuestion(index) {
+      document.querySelectorAll('.question-container').forEach(q => q.style.display = 'none');
+      document.getElementById(`question${questions[index].id}`).style.display = 'block';
+      document.getElementById('currentQuestionNum').textContent = index + 1;
+      
+      document.getElementById('prevBtn').disabled = index === 0;
+      document.getElementById('nextBtn').style.display = index === totalQuestions - 1 ? 'none' : 'block';
+      
+      // Mark question as visited
+      const currentQuestionId = questions[index].id;
+      visitedQuestions.add(currentQuestionId);
+      updateQuestionIndicator(currentQuestionId);
+      
+      document.querySelectorAll('.question-number').forEach((indicator, i) => {
+        indicator.classList.remove('current');
+        if (i === index) {
+          indicator.classList.add('current');
+        }
+      });
+      
+      currentQuestion = index;
+    }
+
+    function updateQuestionIndicator(questionId) {
+      const indicator = document.getElementById(`indicator${questionId}`);
+      indicator.classList.remove('unanswered', 'visited', 'answered');
+      
+      if (answeredQuestions.has(questionId)) {
+        indicator.classList.add('answered');
+      } else if (visitedQuestions.has(questionId)) {
+        indicator.classList.add('visited');
+      } else {
+        indicator.classList.add('unanswered');
+      }
+    }
+
+    function showNextQuestion() {
+      if (currentQuestion < totalQuestions - 1) {
+        showQuestion(currentQuestion + 1);
+      }
+    }
+
+    function showPreviousQuestion() {
+      if (currentQuestion > 0) {
+        showQuestion(currentQuestion - 1);
+      }
+    }
+
+    function jumpToQuestion(index) {
+      showQuestion(index);
+    }
+
+    function updateQuestionStatus(questionId) {
+      answeredQuestions.add(questionId);
+      updateQuestionIndicator(questionId);
+    }
+
+    // Initialize
+    showQuestion(0);
+
+    // Timer
+    function startTimer(duration, display) {
+      let timer = duration, minutes, seconds;
+      const timerInterval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          clearInterval(timerInterval);
+          document.getElementById('testForm').submit();
+        }
+      }, 1000);
+    }
+
+    window.onload = function () {
+      const fiveMinutes = 60 * 60;
+      const display = document.querySelector('#timer');
+      startTimer(fiveMinutes, display);
+    };
+
+    // Prevent form submission on enter
+    document.getElementById('testForm').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
+    });
+
+    // Confirm before submitting
+    document.getElementById('testForm').addEventListener('submit', function(e) {
+      const unansweredCount = totalQuestions - answeredQuestions.size;
+      if (unansweredCount > 0) {
+        if (!confirm(`You have ${unansweredCount} unanswered questions. Are you sure you want to submit?`)) {
+          e.preventDefault();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

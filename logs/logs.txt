@@ -1,0 +1,188 @@
+
+Name: Ravindra Hiwale
+Test Type: EIIINCRB
+Total Correct: 102
+Total Incorrect: 0
+Total Unanswered: 0
+Final Score: 102.0
+Date/Time: 2023-02-08 04:45:21.542466
+
+
+Name: Ravindra Hiwale
+Test Type: EIIINCRB
+Total Correct: 102
+Total Incorrect: 0
+Total Unanswered: 0
+Final Score: 102.0
+Date/Time: 2023-02-08 04:45:22.136047
+
+
+Name: Ravindra Hiwale
+Test Type: EIIINCRB
+Total Correct: 102
+Total Incorrect: 0
+Total Unanswered: 0
+Final Score: 102.0
+Date/Time: 2023-02-08 04:46:38.537102
+
+
+Name: mo_01bn
+Test Type: asp3feb9pm
+Total Correct: 1
+Total Incorrect: 1
+Total Unanswered: 98
+Final Score: 0.75
+Date/Time: 2024-12-31 15:04:29.300361
+
+
+Name: mo_01bn
+Test Type: ca3feb10am
+Total Correct: 1
+Total Incorrect: 4
+Total Unanswered: 95
+Final Score: 0.0
+Date/Time: 2024-12-31 15:26:41.400879
+
+
+Name: mo_01bn
+Test Type: ca3feb10am
+Total Correct: 3
+Total Incorrect: 3
+Total Unanswered: 94
+Final Score: 2.25
+Date/Time: 2024-12-31 15:32:08.506771
+
+
+Name: mo_01bn
+Test Type: ca3feb10am
+Total Correct: 3
+Total Incorrect: 3
+Total Unanswered: 94
+Final Score: 2.25
+Date/Time: 2024-12-31 15:34:16.467355
+
+
+Name: mo_01bn
+Test Type: ca3feb10am
+Total Correct: 3
+Total Incorrect: 3
+Total Unanswered: 94
+Final Score: 2.25
+Date/Time: 2024-12-31 15:35:41.433185
+
+
+Name: it_branch
+Test Type: asp2feb11am
+Total Correct: 1
+Total Incorrect: 4
+Total Unanswered: 95
+Final Score: 0.0
+Date/Time: 2024-12-31 15:47:36.577272
+
+
+Name: it_branch
+Test Type: asp1feb10am
+Total Correct: 0
+Total Incorrect: 3
+Total Unanswered: 97
+Final Score: -0.75
+Date/Time: 2024-12-31 15:50:08.065376
+
+
+Name: admin
+Test Type: asp3feb10am
+Total Correct: 0
+Total Incorrect: 2
+Total Unanswered: 98
+Final Score: -0.5
+Date/Time: 2024-12-31 15:58:51.666801
+
+
+Name: admin
+Test Type: asp3feb10am
+Total Correct: 0
+Total Incorrect: 1
+Total Unanswered: 99
+Final Score: -0.25
+Date/Time: 2024-12-31 16:01:25.365652
+
+
+Name: admin
+Test Type: asp3feb10am
+Total Correct: 1
+Total Incorrect: 2
+Total Unanswered: 97
+Final Score: 0.5
+Date/Time: 2024-12-31 16:03:04.289651
+
+
+Name: admin
+Test Type: asp3feb10am
+Total Correct: 1
+Total Incorrect: 3
+Total Unanswered: 96
+Final Score: 0.25
+Date/Time: 2024-12-31 16:04:00.792808
+
+
+Name: admin
+Test Type: asp3feb10am
+Total Correct: 1
+Total Incorrect: 2
+Total Unanswered: 97
+Final Score: 0.5
+Date/Time: 2024-12-31 16:04:55.461998
+
+
+Name: 8377962179
+Test Type: asp3feb9pm
+Total Correct: 2
+Total Incorrect: 3
+Total Unanswered: 95
+Final Score: 1.25
+Date/Time: 2024-12-31 16:07:35.759192
+
+
+Name: 8377962179
+Test Type: asp3feb10am
+Total Correct: 1
+Total Incorrect: 1
+Total Unanswered: 98
+Final Score: 0.75
+Date/Time: 2024-12-31 16:11:47.989625
+
+
+Name: admin
+Test Type: asp2feb11am
+Total Correct: 0
+Total Incorrect: 3
+Total Unanswered: 97
+Final Score: -0.75
+Date/Time: 2024-12-31 16:30:16.342577
+
+
+Name: admin
+Test Type: asp2feb11am
+Total Correct: 0
+Total Incorrect: 3
+Total Unanswered: 97
+Final Score: -0.75
+Date/Time: 2024-12-31 16:33:06.297450
+
+
+Name: 8377962179
+Test Type: asp3feb10am
+Total Correct: 0
+Total Incorrect: 3
+Total Unanswered: 97
+Final Score: -0.75
+Date/Time: 2024-12-31 16:35:55.942305
+
+
+Name: 8377962179
+Test Type: asp3feb10am
+Total Correct: 0
+Total Incorrect: 4
+Total Unanswered: 96
+Final Score: -1.0
+Date/Time: 2024-12-31 16:37:57.979761

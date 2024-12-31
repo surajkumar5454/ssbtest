@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Test Results</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+          background: #f0f2f5;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .result-card {
+          background: white;
+          border-radius: 12px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease;
+        }
+        pre {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-gray-800">Test Results</h1>
+            <a href="{{ url_for('admin_login') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+                Back to Dashboard
+            </a>
+        </div>
+
+        {% if error %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <span class="block sm:inline">{{ error }}</span>
+        </div>
+        {% endif %}
+
+        {% if results %}
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Username</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Test Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {% for result in results %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ result.Date }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ result.Username }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ result['Test Type'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ result['Final Score'] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                <button onclick="toggleDetails({{ loop.index }})" class="text-blue-600 hover:text-blue-800">
+                                    Show Details
+                                </button>
+                                <div id="details-{{ loop.index }}" class="hidden mt-2 text-sm text-gray-600">
+                                    <p>Total Questions: {{ result['Total Questions'] }}</p>
+                                    <p>Correct Answers: {{ result['Correct Answers'] }}</p>
+                                    <p>Incorrect Answers: {{ result['Incorrect Answers'] }}</p>
+                                    <p>Unanswered Questions: {{ result['Unanswered Questions'] }}</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% else %}
+        <div class="bg-gray-50 p-4 rounded-lg text-center text-gray-600">
+            No test results found.
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function toggleDetails(index) {
+            const details = document.getElementById(`details-${index}`);
+            const isHidden = details.classList.contains('hidden');
+            details.classList.toggle('hidden');
+            
+            // Update button text
+            const button = event.target;
+            button.textContent = isHidden ? 'Hide Details' : 'Show Details';
+        }
+    </script>
+</body>
+</html>
