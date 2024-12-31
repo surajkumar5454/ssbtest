@@ -3,6 +3,7 @@
 <head>
   <title>AIPDM</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<<<<<<< HEAD
 </head>
 <body class="flex items-center justify-center h-screen">
   <div class="text-center">
@@ -63,4 +64,86 @@
     };
   </script>
 </body>
+=======
+  </head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  $("#event_details").hide();
+
+  $("#test_type").change(function() {
+    if ($("#test_type").val() !== "please select") {
+      $("#event_details").show();
+    } else {
+      $("#event_details").hide();
+    }
+  });
+});
+</script>
+<body class="flex items-center justify-center h-screen">
+  <div class="text-center ">
+    <div align="center"><img src="./../static/ssblogo.png" alt="Image" width="100" height="100" ></div>
+    <h1 class="text-2xl ">AIPDM</h1>
+    <p class="mb-6">Welcome to the MCQ test application.</p>
+    <div align="center" >
+      <form action="test" method="get">
+        <input type="text" class="block border border-gray-500 p-2 mb-4" name="username" placeholder="Enter your name" required>
+<!--        <select  name="test_type" class="block border border-gray-500 p-2 mb-4" id="test_type" required>-->
+<!--          <option value="please select">Select Event</option>-->
+<!--          <option value="event1">Event I</option>-->
+<!--          <option value="event2">Event II</option>-->
+<!--        </select>-->
+<!--        <select  name="questionpaper" class="block border border-gray-500 p-2 mb-4" id="event_details" required>-->
+<!--        </select>-->
+
+
+
+        <select  name="questionpaper" class="block border border-gray-500 p-2 mb-4" id="Xevent_details" required>
+          <option value="please select">Select Event</option>
+          {% for file in filedata %}
+          <option value="{{file.filename}}">{{file.desc}}</option>
+          {% endfor %}
+        </select>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600">Start the test</button>
+      </form>
+    </div>
+  </div>
+</body>
+
+<!--  <script>-->
+<!--  const testType = document.getElementById("test_type");-->
+<!--  const eventDetails = document.getElementById("event_details");-->
+
+<!--  testType.addEventListener("change", function() {-->
+<!--    if (this.value === "event1") {-->
+<!--      eventDetails.innerHTML = `-->
+<!--        <option value="ca1feb10am.xlsx">1 Feb: 10am</option>-->
+<!--        <option value="ca1feb4pm.xlsx">1 Feb: 4pm</option>-->
+<!--        <option value="ca1feb9pm.xlsx">1 Feb: 9pm</option>-->
+<!--        <option value="ca2feb11am.xlsx">2 Feb: 11am</option>-->
+<!--        <option value="ca2feb4pm.xlsx">2 Feb: 4pm</option>-->
+<!--        <option value="ca2feb9pm.xlsx">2 Feb: 9pm</option>-->
+<!--        <option value="ca3feb10am.xlsx">3 Feb: 10am</option>-->
+<!--        <option value="ca3feb4pm.xlsx">3 Feb: 4pm</option>-->
+<!--        <option value="ca3feb9pm.xlsx">3 Feb: 9pm</option>-->
+<!--      `;-->
+<!--    } else if (this.value === "event2") {-->
+<!--      eventDetails.innerHTML = `-->
+<!--        <option value="asp1feb10am.xlsx">1 Feb: 10am</option>-->
+<!--        <option value="asp1feb4pm.xlsx">1 Feb: 4pm</option>-->
+<!--        <option value="asp1feb9pm.xlsx">1 Feb: 9pm</option>-->
+<!--        <option value="asp2feb11am.xlsx">2 Feb: 11am</option>-->
+<!--        <option value="asp2feb4pm.xlsx">2 Feb: 4pm</option>-->
+<!--        <option value="asp2feb9pm.xlsx">2 Feb: 9pm</option>-->
+<!--        <option value="asp3feb10am.xlsx">3 Feb: 10am</option>-->
+<!--        <option value="asp3feb4pm.xlsx">3 Feb: 4pm</option>-->
+<!--        <option value="asp3feb9pm.xlsx">3 Feb: 9pm</option>-->
+<!--      `;-->
+<!--    } else {-->
+<!--      eventDetails.innerHTML = ``;-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 </html>

@@ -23,6 +23,7 @@ Total Correct: 102
 Total Incorrect: 0
 Total Unanswered: 0
 Final Score: 102.0
+<<<<<<< HEAD
 Date/Time: 2023-02-08 04:46:38.537102
 
 
@@ -186,3 +187,6 @@ Total Incorrect: 4
 Total Unanswered: 96
 Final Score: -1.0
 Date/Time: 2024-12-31 16:37:57.979761
+=======
+Date/Time: 2023-02-08 04:46:38.537102
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24

@@ -1,5 +1,6 @@
 from datetime import datetime
 from time import sleep
+<<<<<<< HEAD
 import os
 from functools import wraps
 from werkzeug.utils import secure_filename
@@ -70,12 +71,25 @@ def admin_login():
             return redirect(url_for('admin'))
         flash('Invalid credentials')
     return render_template("admin_login.html")
+=======
+
+from flask import Flask, render_template, request, session, redirect, url_for
+import pandas as pd
+import os
+import json
+
+app = Flask(__name__)
+app.secret_key = 'secret_key'  # Replace with a secret key of your own
+UPLOAD_FOLDER = "papers"
+
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 
 @app.route("/logs", methods=["GET", "POST"])
 def logs():
     f = open('logs/logs.txt', 'r')
     return f.read().splitlines()
 
+<<<<<<< HEAD
 @app.route("/admin", methods=["GET", "POST"])
 @admin_required
 def admin():
@@ -105,10 +119,25 @@ def admin():
         except Exception as e:
             flash(f'Error uploading file: {str(e)}')
             
+=======
+
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    if request.method == "POST":
+        questions_file = request.files["questions_file"]
+        description = request.form["description"]
+        # Save the questions file to the uploads folder
+        filename = questions_file.filename
+        questions_file.save(os.path.join(UPLOAD_FOLDER, filename))
+        file = open(f"papers/papers.txt", "a+")
+        file.write(f"\n{filename},{description}")
+        file.close()
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
         return redirect(url_for("admin"))
 
     return render_template("admin.html")
 
+<<<<<<< HEAD
 def populate(test_type):
     try:
         excel_path = "papers"
@@ -162,6 +191,24 @@ def populate(test_type):
     except Exception as e:
         print(f"Error in populate function: {str(e)}")
         raise
+=======
+
+def populate(test_type):
+    excel_path = "papers"
+    excel_filename = excel_path + "/" + test_type
+    df = pd.read_excel(excel_filename)
+    questions = []
+    for i in range(len(df)):
+        question = {}
+        question["id"] = df.iloc[i]["id"]
+        question["text"] = df.iloc[i]["text"]
+        question["options"] = [df.iloc[i]["option1"], df.iloc[i]["option2"],
+                               df.iloc[i]["option3"], df.iloc[i]["option4"]]
+        question["answer"] = df.iloc[i]["answer"]
+        questions.append(question)
+    return questions
+
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 
 @app.route("/")
 def index():
@@ -177,11 +224,16 @@ def index():
                 filedata.append({'filename': filename, 'desc': desc})
     return render_template("index.html", filedata=filedata)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 @app.route("/result", methods=["GET", "POST"])
 def result():
     score = 0
     return render_template("result.html", score=score)
 
+<<<<<<< HEAD
 def log_test_results(username, test_type, total_correct, total_wrong, total_unanswered, score):
     try:
         current_datetime = datetime.now()
@@ -236,12 +288,36 @@ def test():
         except Exception as e:
             flash(f'Error loading test: {str(e)}')
             return redirect(url_for('index'))
+=======
+
+def writetofile(score, total_correct, total_wrong, total_unanswered):
+    username = session.get("username")
+    test_type = session.get("test_type")
+    test_type = test_type.split('.')
+    current_datetime = datetime.now()
+    file = open(f"logs/logs.txt", "a+")
+    file.write(
+        f"\n\n\nName: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
+    file.close()
+
+
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    if request.method == "GET":
+        username = request.args.get('username')
+        test_type = request.args.get('questionpaper')
+        session["username"] = username
+        session["test_type"] = test_type
+        questions = populate(test_type)
+        return render_template("test.html", questions=questions)
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 
     if request.method == "POST":
         score = 0
         total_unanswered = 0
         total_correct = 0
         total_wrong = 0
+<<<<<<< HEAD
         
         try:
             test_type = session.get("test_type")
@@ -288,6 +364,35 @@ def test():
         except Exception as e:
             flash(f'An error occurred during test submission: {str(e)}')
             return redirect(url_for('index'))
+=======
+        test_type = session.get("test_type")
+        questions = populate(test_type)
+        for question in questions:
+            if str(question["id"]) in request.form:
+                if request.form[str(question["id"])] == str(question["answer"]):
+                    total_correct += 1
+                    question["selected_answer"] = int(request.form[str(question["id"])])
+                else:
+                    question["selected_answer"] = int(request.form[str(question["id"])])
+                    total_wrong += 1
+            else:
+                question["selected_answer"] = None
+                total_unanswered += 1
+        total_questions = len(questions)
+        score = total_correct - (total_wrong * 0.25)
+        sleep(10)
+        # writetofile(score, total_correct, total_wrong, total_unanswered)
+        username = session.get("username")
+        test_type = session.get("test_type")
+        test_type = test_type.split('.')
+        current_datetime = datetime.now()
+        file = open(f"logs/logs.txt", "a+")
+        file.write(f"\n\n\nName: {username}\nTest Type: {test_type[0]}\nTotal Correct: {total_correct}\nTotal Incorrect: {total_wrong}\nTotal Unanswered: {total_unanswered}\nFinal Score: {score}\nDate/Time: {current_datetime}")
+        file.close()
+        return render_template("result.html", score=score, questions=questions, total_questions=total_questions,
+                               total_correct=total_correct, total_wrong=total_wrong, total_unanswered=total_unanswered)
+
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
 
 @app.route("/revision", methods=["GET", "POST"])
 def revision():
@@ -309,6 +414,7 @@ def revision():
         questions = populate(test_type)
         return render_template("revision.html", questions=questions)
 
+<<<<<<< HEAD
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html'), 404
@@ -518,3 +624,8 @@ if __name__ == "__main__":
         open('papers/papers.txt', 'a').close()
         
     app.run(debug=False)  # Set debug=False in production
+=======
+
+if __name__ == "__main__":
+    app.run(debug=True)
+>>>>>>> ad68a77c16841f3bffd9f5912325d08c5935ef24
