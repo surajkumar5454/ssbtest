@@ -97,3 +97,14 @@ Incorrect Answers: 2
 Unanswered Questions: 95
 Final Score: 3/100
 ==================================================
+
+==================================================
+Date: 2024-12-31 17:38:45
+Username: 16020013
+Test Type: asp6feb.xlsx
+Total Questions: 204
+Correct Answers: 1
+Incorrect Answers: 2
+Unanswered Questions: 201
+Final Score: 1/204
+==================================================

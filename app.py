@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from flask import Flask, render_template, request, session, redirect, url_for, flash, abort
 import pandas as pd
 from dotenv import load_dotenv
-
+from flask import Response
 # Load environment variables
 load_dotenv(override=True)
 
@@ -75,6 +75,16 @@ def admin_login():
 def logs():
     f = open('logs/logs.txt', 'r')
     return f.read().splitlines()
+
+@app.route("/admin_result", methods=["GET", "POST"])
+def admin_result():
+    try:
+        with open('results/result.txt', 'r') as f:
+            content = f.read()
+            # Return the content as plain text with formatting preserved
+            return Response(content, mimetype='text/plain')
+    except FileNotFoundError:
+        return {"error": "File not found"}, 404
 
 @app.route("/admin", methods=["GET", "POST"])
 @admin_required
