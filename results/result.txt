@@ -108,3 +108,36 @@ Incorrect Answers: 2
 Unanswered Questions: 201
 Final Score: 1/204
 ==================================================
+
+==================================================
+Date: 2024-12-31 18:17:49
+Username: admin
+Test Type: java_questions.xlsx
+Total Questions: 100
+Correct Answers: 2
+Incorrect Answers: 2
+Unanswered Questions: 96
+Final Score: 2/100
+==================================================
+
+==================================================
+Date: 2025-01-01 09:54:12
+Username: it_branch
+Test Type: Basics_Java.xlsx
+Total Questions: 24
+Correct Answers: 2
+Incorrect Answers: 4
+Unanswered Questions: 18
+Final Score: 2/24
+==================================================
+
+==================================================
+Date: 2025-01-01 09:57:46
+Username: it_branch
+Test Type: Basics_Java.xlsx
+Total Questions: 24
+Correct Answers: 2
+Incorrect Answers: 6
+Unanswered Questions: 16
+Final Score: 0.5/24
+==================================================

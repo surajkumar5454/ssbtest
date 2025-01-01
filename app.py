@@ -3,7 +3,7 @@ from time import sleep
 import os
 from functools import wraps
 from werkzeug.utils import secure_filename
-from flask import Flask, render_template, request, session, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, session, redirect, url_for, flash, abort, jsonify
 import pandas as pd
 from dotenv import load_dotenv
 from flask import Response
@@ -272,7 +272,7 @@ def test():
                     total_unanswered += 1
                     
             total_questions = len(questions)
-            score = total_correct
+            score = total_correct - (total_wrong * 0.25)
             print(f"Scores calculated - Correct: {total_correct}, Wrong: {total_wrong}, Unanswered: {total_unanswered}")
             
             # Log results
@@ -419,7 +419,7 @@ def submit_test():
                 total_wrong += 1
                 print("Status: Incorrect")
         
-        score = total_correct
+        score = total_correct - (total_wrong * 0.25)
         print(f"\nFinal scores:")
         print(f"Total correct: {total_correct}")
         print(f"Total wrong: {total_wrong}")
